@@ -1,5 +1,6 @@
-from pages.locators import MainPageLocators
 from selenium.common.exceptions import NoSuchElementException, WebDriverException
+from selenium.webdriver.common.by import By
+
 
 class BasePage:
     def __init__(self, browser, url, timeout=5):  # конструктор
@@ -16,3 +17,9 @@ class BasePage:
         except (NoSuchElementException, WebDriverException):
             return False
         return True
+
+    def elements_are_presented_on_page(self, d):
+        for k, v in d.items():
+            assert self.is_element_present(By.CSS_SELECTOR, v), 'Элемент ' + str(k) + ' отсутствует'
+            continue
+
