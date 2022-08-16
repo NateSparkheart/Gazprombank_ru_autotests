@@ -1,4 +1,3 @@
-import faker
-f = faker.Faker()
-name = f.name()
-print(f.name())
+import random
+
+print(random.randint(9000000000, 9999999999))

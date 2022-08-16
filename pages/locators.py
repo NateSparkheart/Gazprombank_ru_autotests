@@ -25,3 +25,5 @@ class OrderADebtCardLocators:
     NAME_FIELD = (By.CSS_SELECTOR, 'div.nr-step-form-fields > div:nth-child(2) > div > input')
     PHONE_NUMBER_FIELD = (By.CSS_SELECTOR, 'div.nr-step-form-fields > div:nth-child(3) > div > input')
     EMAIL_FIELD = (By.CSS_SELECTOR, 'div.nr-step-form-fields > div:nth-child(4) > div > input')
+    NEXT_STEP_BUTTON = (By.CSS_SELECTOR, ' div.nr-step-form-sms > button')
+    SMS_CODE_FIELD = (By.CSS_SELECTOR, '#sms_code')
