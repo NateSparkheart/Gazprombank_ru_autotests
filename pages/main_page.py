@@ -1,7 +1,9 @@
 import time
 
-from pages.locators import MainPageLocators
+from pages.locators import MainPageLocators, OrderADebtCardLocators
 from pages.base_page import BasePage
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
 
 
 class MainPage(BasePage):
@@ -15,9 +17,18 @@ class MainPage(BasePage):
         become_a_client_button = self.browser.find_element(*MainPageLocators.BECOME_A_CLIENT)
         become_a_client_button.click()
 
-    def click_offer_a_debt_card(self):
+    def click_offer_a_debt_card(self): ## сюдой, ордЭр
         offer_a_debt_card_button = self.browser.find_element(*MainPageLocators.ORDER_A_DEBT_CARD_BUTTON)
         offer_a_debt_card_button.click()
-        time.sleep(10)
+        WebDriverWait(self.browser, 10).until(EC.presence_of_element_located(OrderADebtCardLocators.
+                                                                             NAME_FIELD))
         offer_a_debt_card_link = self.browser.current_url
+        self.browser.get_screenshot_as_file("C:\\Users\\kappa\\PycharmProjects\\Gazprombank_ru_autotests"
+                                            "\\ScreenShots\\order_a_debt_card_page.png")
+
         assert '/personal/cards/' in offer_a_debt_card_link
+
+    def close_cookie_alert(self):
+        close_cookie_btn = self.browser.find_element(*MainPageLocators.CLOSE_COOKIE)
+        close_cookie_btn.click()
+        # assert self.browser.find_element(*MainPageLocators.COOKIE_ALERT)

@@ -4,21 +4,24 @@ from selenium.webdriver.common.by import By
 class MainPageLocators:
     main_page_ui_elements_locators = {
         'bank_project_switcher': 'div > svg > g > path:nth-child(1)',
-        'private_client_link': 'div.main_root__wrapper_block--1aa82.main_left--1aa82 > a > svg',
-        'login_button': 'div.main_root__entry_links--1aa82 > a',
-        'client_switcher': 'div.main_root__sections--1aa82.intersection_wrapper_root--b657c'
-                           '.intersection_wrapper_mount--b657c > div > div > div > svg',
-        'location': 'div.main_root__wrapper_block--1aa82.main_right--1aa82 > div:nth-child(1) > span',
-        'offices and ATMs': 'div.main_root__wrapper_block--1aa82.main_right--1aa82 > div:nth-child(2)'
-                            '> a:nth-child(1)',
-        'become_a_client': 'div:nth-child(1) > div:nth-child(1) > div > div > button > span',
-        'suspicious_button': 'lame > selector',
+        'private_client_link': '.header_full_main_menu_active--1aa82.intersection_wrapper_visible--b657c',
+        'login_button': '.header_full_main_menu_root__entry_links--1aa82',
+        'client_switcher': '.intersection_sub_menu_sub_menu__icon--380c7',
+        'location': '.header_full_main_menu_root__item_city--1aa82',
+        'offices and ATMs': '.header_full_main_menu_root__item_link--1aa82',
+        'become_a_client': '.header_full_bottom_popups_popups__cell--8cf97:first-of-type',
+        #'suspicious_button': 'lame > selector',
+        #'promo': '.nr-banners-control',
+        'cookie_alert': '.cookie_accept_root__content--df898'
     }
 
     LOGIN_BUTTON = (By.CSS_SELECTOR, main_page_ui_elements_locators['login_button'])
     BECOME_A_CLIENT = (By.CSS_SELECTOR, main_page_ui_elements_locators['become_a_client'])
-    ORDER_A_DEBT_CARD_BUTTON = (By.CSS_SELECTOR, '#tippy-2 > div > div > div > div > div > div > a:nth-child(2)'
-                                '> div > div.popup_links_root__block--8eeef')
+    ORDER_A_DEBT_CARD_BUTTON = (By.CSS_SELECTOR, '.header_full_popup_links_root__wrapper--8eeef ['
+                                                 'href="/personal/cards/6731473#first-step"]')
+   # PROMO_BANNER = (By.CSS_SELECTOR, main_page_ui_elements_locators['promo'])
+    COOKIE_ALERT = (By.CSS_SELECTOR, main_page_ui_elements_locators['cookie_alert'])
+    CLOSE_COOKIE = (By.CSS_SELECTOR, '.cookie_accept_root__cross--df898')
 
 
 class OrderADebtCardLocators:

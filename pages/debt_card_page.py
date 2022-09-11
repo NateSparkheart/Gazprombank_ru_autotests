@@ -11,27 +11,28 @@ class DebtCardPage(BasePage):
     def request_a_card(self):
         name = WebDriverWait(self.browser, 10).until(
             EC.presence_of_element_located(OrderADebtCardLocators.NAME_FIELD))
-        name.send_keys('Смирнов Сергей Дмитриевич')
-        time.sleep(1)
+        name.send_keys('Сергеев Сергей Сергеевич')
 
         phone = WebDriverWait(self.browser, 10).until(
             EC.presence_of_element_located(OrderADebtCardLocators.PHONE_NUMBER_FIELD))
         phone.send_keys(random.randint(9000000000, 9999999999))
-        time.sleep(1)
 
         mail = WebDriverWait(self.browser, 10).until(EC.presence_of_element_located(OrderADebtCardLocators.
                                                                                     EMAIL_FIELD))
         mail.send_keys(('test_mail' + str(random.randint(1, 100)) + '@gmail.com'))
-        time.sleep(1)
+        # time.sleep(1)
 
         next_step = WebDriverWait(self.browser, 10).until(EC.presence_of_element_located(OrderADebtCardLocators.
                                                                                          NEXT_STEP_BUTTON))
 
         next_step.click()
-        time.sleep(1)
 
         sms_field = WebDriverWait(self.browser, 10).until(EC.presence_of_element_located(OrderADebtCardLocators.
                                                                                          SMS_CODE_FIELD))
-        time.sleep(1)
+        self.browser.execute_script("window.scrollTo(0, 1000)")
+
+        self.browser.get_screenshot_as_file("C:\\Users\\kappa\\PycharmProjects\\Gazprombank_ru_autotests"
+                                            "\\ScreenShots\\sms_code.png")
+
         assert self.is_element_present(
             *OrderADebtCardLocators.SMS_CODE_FIELD), 'Поле для ввода кода из СМС отсутствует'
